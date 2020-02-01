@@ -21,14 +21,14 @@ class Game
   end
 
   def current_player
-     board.turn_count.odd? ? player_2 : player_1
+    board.turn_count.odd? ? player_2 : player_1
   end
 
   def won?
     WIN_COMBINATIONS.each do |combination|   #[0,1,2] which is board range (0-8)
         if @board.cells[combination[0]] == @board.cells[combination[1]] &&
           @board.cells[combination[1]] == @board.cells[combination[2]] &&
-          @board.taken?(combination[0]+1)
+           @board.taken?(combination[0]+1)
           #Need to +1, because #taken? rspec test is working off user_input range (1-9)
           return combination
         end
@@ -41,8 +41,8 @@ class Game
   end
 
   def over?
-     (won? || draw?) ? true : false
-     # IF board is not full, game is in progress (FALSE), ELSE, game is over (TRUE)
+    (won? || draw?) ? true : false
+    # IF board is not full, game is in progress (FALSE), ELSE, game is over (TRUE)
   end
 
   def winner
